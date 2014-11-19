@@ -13,8 +13,9 @@ public class GameScreen implements Screen {
 
     public GameScreen() {
         map = new TmxMapLoader().load("map/level01.tmx");      //load level map from my assets
-        renderer = new OrthogonalTiledMapRenderer(map, 1/70f);//renders map onto the screen and sets pixel length of tiles
-        camera = new OrthographicCamera(14f, 14f);            //sets view of camera to 14 tiles by 14 tiles
+        renderer = new OrthogonalTiledMapRenderer(map, 1/70f); //renders map onto the screen and sets pixel length of tiles
+        camera = new OrthographicCamera(14f, 10f);             //sets view of camera to 14 tiles by 14 tiles
+        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);   //set camera position to the height and width divided by two to align to the bottom
     }
 
     @Override
