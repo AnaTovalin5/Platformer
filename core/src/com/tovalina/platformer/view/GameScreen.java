@@ -1,5 +1,6 @@
 package com.tovalina.platformer.view;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -14,7 +15,12 @@ public class GameScreen implements Screen {
     public GameScreen() {
         map = new TmxMapLoader().load("map/level01.tmx");      //load level map from my assets
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f); //renders map onto the screen and sets pixel length of tiles
-        camera = new OrthographicCamera(14f, 10f);             //sets view of camera to 14 tiles by 14 tiles
+
+        //looks through graphics library and pulls window width and height
+        float width = Gdx.graphics.getWidth();
+        float height = Gdx.graphics.getHeight();
+
+        camera = new OrthographicCamera(14f, 14f * (height / width));             //sets view of camera to the correct aspect ratio
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);   //set camera position to the height and width divided by two to align to the bottom
     }
 
