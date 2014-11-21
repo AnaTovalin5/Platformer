@@ -2,6 +2,7 @@ package com.tovalina.platformer.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -26,6 +27,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        Gdx.gl.glClearColor(0.32f, 0.33f, 0.83f, 1f); //sets background color to blue
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //clears game screen and allows us to use our background color
+
         camera.update();           //updates camera view
         renderer.setView(camera);  //sets camera to view rendered map
         renderer.render();
@@ -33,7 +37,10 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        //sets window size to maintain aspect ratio
+        camera.viewportWidth = 14f;
+        camera.viewportHeight = 14f * height / width;
+        camera.update();
     }
 
     @Override
