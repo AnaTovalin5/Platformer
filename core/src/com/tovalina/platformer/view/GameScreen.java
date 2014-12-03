@@ -4,14 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.tovalina.platformer.model.Player;
 
 public class GameScreen implements Screen {
     public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;
     public OrthographicCamera camera;
+
+    public SpriteBatch spriteBatch;
+    public Player player;
 
     public GameScreen() {
         map = new TmxMapLoader().load("map/level01.tmx");      //load level map from my assets
@@ -23,6 +28,9 @@ public class GameScreen implements Screen {
 
         camera = new OrthographicCamera(14f, 14f * (height / width));             //sets view of camera to the correct aspect ratio
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);   //set camera position to the height and width divided by two to align to the bottom
+
+        spriteBatch = new SpriteBatch(); //intializes spriteBatch
+        player = new Player();  //initialzes player constructor
     }
 
     @Override
@@ -33,6 +41,10 @@ public class GameScreen implements Screen {
         camera.update();           //updates camera view
         renderer.setView(camera);  //sets camera to view rendered map
         renderer.render();
+
+        spriteBatch.begin();  //starts the spriteBatch object
+        player.draw(spriteBatch);  //draws the player onto the screen
+        spriteBatch.end();  //ends the spriteBatch object
     }
 
     @Override
