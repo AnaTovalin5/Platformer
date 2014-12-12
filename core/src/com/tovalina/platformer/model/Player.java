@@ -19,10 +19,14 @@ public class Player {
 
     public Player() {
         position = new Vector2(0, 1); //sets the sprite to be placed on the origin
+
         width = 70;
         height = 100;
+
         spriteSheet = new SpriteSheet("img/aliens.png", width, height);
         animation = spriteSheet.createAnimation(9, 10, 0.1f);
+        animation = spriteSheet.flipAnimation(animation, true, false);
+
         stateTime = 0f;  //initializes statTime variable
     }
 
@@ -34,4 +38,6 @@ public class Player {
         stateTime += deltaTime; //sets gameTime as the game runs
         position.x += deltaTime; //updates x position
     }
+
+
 }
