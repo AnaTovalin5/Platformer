@@ -9,29 +9,29 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Player {
     public Vector2 position;
-    public Animation animation;
     public SpriteSheet spriteSheet;
 
     public int width;
     public int height;
 
     private float stateTime;
+    private HashMap<String, Animation> animations;
 
     public Player() {
         position = new Vector2(0, 1); //sets the sprite to be placed on the origin
+        animations = new HashMap<String, Animation>();
 
         width = 70;
         height = 100;
 
         spriteSheet = new SpriteSheet("img/aliens.png", width, height);
-        animation = spriteSheet.createAnimation(9, 10, 0.1f);
-        animation = spriteSheet.flipAnimation(animation, true, false);
+        animations.put("walk", spriteSheet.createAnimation(9, 10, 0.1f);
 
         stateTime = 0f;  //initializes statTime variable
     }
 
     public void draw(Batch spriteBatch) {
-        spriteBatch.draw(animation.getKeyFrame(stateTime, true), position.x, position.y, 70 * (1/70f), 100 * (1/70f));  //draws the character onto the screen and spcifies the height/width
+        spriteBatch.draw(animations.get("walk").getKeyFrame(stateTime, true), position.x, position.y, 70 * (1/70f), 100 * (1/70f));  //draws the character onto the screen and spcifies the height/width
     }
 
     public void update(float deltaTime) {
