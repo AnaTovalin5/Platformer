@@ -9,29 +9,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
+import com.tovalina.platformer.controller.CameraController;
+import com.tovalina.platformer.controller.LevelController;
+import com.tovalina.platformer.controller.PlayerController;
 import com.tovalina.platformer.model.Player;
 
-public class GameScreen implements Screen {
-    public TiledMap map;
-    public OrthogonalTiledMapRenderer renderer;
-    public OrthographicCamera camera;
+import javafx.scene.Camera;
 
-    public Batch spriteBatch;
-    public Player player;
+public class GameScreen implements Screen {
 
     public GameScreen() {
-        map = new TmxMapLoader().load("map/level01.tmx");      //load level map from my assets
-        renderer = new OrthogonalTiledMapRenderer(map, 1/70f); //renders map onto the screen and sets pixel length of tiles
-
-        //looks through graphics library and pulls window width and height
-        float width = Gdx.graphics.getWidth();
-        float height = Gdx.graphics.getHeight();
-
-        camera = new OrthographicCamera(14f, 14f * (height / width));             //sets view of camera to the correct aspect ratio
-        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0f);   //set camera position to the height and width divided by two to align to the bottom
-
-        spriteBatch = renderer.getSpriteBatch(); //intializes spriteBatch
-        player = new Player();  //initialzes player constructor
+        LevelController.initializeController();
+        CameraController.intializeController();
+        PlayerController.initializeController();
     }
 
     @Override
@@ -39,24 +32,15 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0.32f, 0.33f, 0.83f, 1f); //sets background color to blue
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); //clears game screen and allows us to use our background color
 
-        camera.update();           //updates camera view
-        renderer.setView(camera);  //sets camera to view rendered map
-        renderer.render();
-
-
-        player.update(delta);  //updates the player's position
-
-        spriteBatch.begin();  //starts the spriteBatch object
-        player.draw(spriteBatch);  //draws the player onto the screen
-        spriteBatch.end();  //ends the spriteBatch object
+        CameraController.update();
+        LevelController.update();
+        PlayerController.update(delta);
+        LevelController.draw();
     }
 
     @Override
     public void resize(int width, int height) {
-        //sets window size to maintain aspect ratio
-        camera.viewportWidth = 14f;
-        camera.viewportHeight = 14f * height / width;
-        camera.update();
+        CameraController.resize(width, height);
     }
 
     @Override
