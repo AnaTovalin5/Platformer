@@ -35,6 +35,7 @@ public class LevelController {
     public static void draw() {
         spriteBatch.begin();  //starts the spriteBatch object
         PlayerController.player.draw(spriteBatch);  //draws the player onto the screen
+        EnemyController.enemy.draw(spriteBatch);
         spriteBatch.end();  //ends the spriteBatch object
 
         debugRenderer.render(gameWorld, CameraController.camera.combined);  //builds the view

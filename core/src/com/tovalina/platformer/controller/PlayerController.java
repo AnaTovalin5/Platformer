@@ -12,7 +12,7 @@ public class PlayerController {
     private static final float MAX_VELOCITY = 5f;
 
     public static void initializeController() {
-        player = new Player(new Vector2(0,1), 70, 100);  //initialzes player constructor
+        player = new Player(new Vector2(0,1), 70, 100, "img/aliens.png");  //initialzes player constructor
     }
 
     public static void update(float deltaTime) {
@@ -31,6 +31,10 @@ public class PlayerController {
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             player.physicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);  //moves character to the right when right key is pressed
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            player.physicsBody.applyLinearImpulse(-VELOCITY, 0f, position.x, position.y, true);  //moves character to the left when right key is pressed
         }
     }
 }

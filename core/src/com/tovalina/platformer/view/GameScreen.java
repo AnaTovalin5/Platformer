@@ -13,8 +13,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.tovalina.platformer.controller.CameraController;
+import com.tovalina.platformer.controller.EnemyController;
 import com.tovalina.platformer.controller.LevelController;
 import com.tovalina.platformer.controller.PlayerController;
+import com.tovalina.platformer.model.Enemy;
 import com.tovalina.platformer.model.Player;
 
 import javafx.scene.Camera;
@@ -25,6 +27,7 @@ public class GameScreen implements Screen {
         LevelController.initializeController();
         CameraController.intializeController();
         PlayerController.initializeController();
+        EnemyController.initializeController();
     }
 
     @Override
@@ -35,6 +38,7 @@ public class GameScreen implements Screen {
         CameraController.update();
         LevelController.update();
         PlayerController.update(delta);
+        EnemyController.update(delta);
         LevelController.draw();
     }
 
