@@ -28,6 +28,7 @@ public class Enemy extends Sprite {
         physicsBody.createFixture(fixtureDefinition);
         rectangleShape.dispose(); //deletes the shape
         animations.put("walk", spriteSheet.createAnimation(0,1, 0.3f));
+        currentAnimation = "walk";
     }
 
     public void draw(Batch spriteBatch) {

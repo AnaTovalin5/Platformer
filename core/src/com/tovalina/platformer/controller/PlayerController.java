@@ -31,10 +31,12 @@ public class PlayerController {
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             player.physicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);  //moves character to the right when right key is pressed
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            player.physicsBody.applyLinearImpulse(-VELOCITY, 0f, position.x, position.y, true);  //moves character to the left when right key is pressed
+        }else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            player.physicsBody.applyLinearImpulse(-VELOCITY, 0f, position.x, position.y, true);  //moves character to the left when left key is pressed
+        }else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            player.physicsBody.applyLinearImpulse(0, VELOCITY, position.x, position.y, true);  //moves character to the up when up key is pressed
+        }else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            player.physicsBody.applyLinearImpulse(0, -VELOCITY, position.x, position.y, true);  //moves character to the down when down key is pressed
         }
     }
 }

@@ -28,7 +28,6 @@ public class Sprite {
         this.height = height * LevelController.UNIT_SCALE;
 
         spriteSheet = new SpriteSheet(sheetpath, width, height);
-        currentAnimation = "walk";
 
         stateTime = 0f;  //initializes statTime variable
     }

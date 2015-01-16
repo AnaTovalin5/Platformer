@@ -14,6 +14,7 @@ public class Player extends Sprite {
         super(position, width, height, sheetpath);
 
         animations.put("walk", spriteSheet.createAnimation(9, 10, 0.1f));
+        currentAnimation = "walk";
 
         BodyDef bodydefinition = new BodyDef();
         bodydefinition.type = BodyDef.BodyType.DynamicBody;

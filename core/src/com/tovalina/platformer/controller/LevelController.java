@@ -25,7 +25,7 @@ public class LevelController {
         level = new Level("map/level01.tmx");
         renderer = new OrthogonalTiledMapRenderer(level.map, UNIT_SCALE); //renders map onto the screen and sets pixel length of tiles
 
-        gameWorld = new World(new Vector2(0, 0), true);
+        gameWorld = new World(new Vector2(0, -9.8f), true);
         worldBodies = new Array<Body>();
         debugRenderer = new Box2DDebugRenderer();
 
