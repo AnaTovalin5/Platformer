@@ -1,12 +1,15 @@
 package com.tovalina.platformer.controller;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.tovalina.platformer.model.Bodies;
 import com.tovalina.platformer.model.Level;
 import com.tovalina.platformer.model.Sprite;
 
@@ -30,6 +33,7 @@ public class LevelController {
         debugRenderer = new Box2DDebugRenderer();
 
         spriteBatch = renderer.getSpriteBatch(); //intializes spriteBatch
+        createLevelBodies();
     }
 
     public static void draw() {
@@ -54,7 +58,18 @@ public class LevelController {
 
         for(Body body : worldBodies) {
             Sprite spriteBody = (Sprite)body.getUserData();
-            spriteBody.position = body.getPosition();
+
+            if (spriteBody != null) {
+                spriteBody.position = body.getPosition();
+            }
+        }
+    }
+
+    private static void createLevelBodies() {
+        MapObjects mapObjects = level.getMapObjects(level.getMapLayer("collisions"));
+
+        for (MapObject mapObject : mapObjects) {
+            Bodies.createBody(mapObject);
         }
     }
 
