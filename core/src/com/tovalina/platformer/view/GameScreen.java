@@ -17,6 +17,7 @@ import com.tovalina.platformer.controller.EnemyController;
 import com.tovalina.platformer.controller.LevelController;
 import com.tovalina.platformer.controller.PlayerController;
 import com.tovalina.platformer.model.Enemy;
+import com.tovalina.platformer.model.InputController;
 import com.tovalina.platformer.model.Player;
 
 import javafx.scene.Camera;
@@ -28,6 +29,7 @@ public class GameScreen implements Screen {
         CameraController.intializeController();
         PlayerController.initializeController();
         EnemyController.initializeController();
+        InputController.initializeController();
     }
 
     @Override

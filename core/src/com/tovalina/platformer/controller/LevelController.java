@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.tovalina.platformer.model.Bodies;
+import com.tovalina.platformer.model.InputController;
 import com.tovalina.platformer.model.Level;
 import com.tovalina.platformer.model.Sprite;
 
@@ -41,6 +42,8 @@ public class LevelController {
         PlayerController.player.draw(spriteBatch);  //draws the player onto the screen
         EnemyController.enemy.draw(spriteBatch);
         spriteBatch.end();  //ends the spriteBatch object
+
+        InputController.draw(spriteBatch);
 
         debugRenderer.render(gameWorld, CameraController.camera.combined);  //builds the view
     }
