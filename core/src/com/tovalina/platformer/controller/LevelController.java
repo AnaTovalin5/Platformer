@@ -14,6 +14,8 @@ import com.tovalina.platformer.model.InputController;
 import com.tovalina.platformer.model.Level;
 import com.tovalina.platformer.model.Sprite;
 
+import javafx.scene.Camera;
+
 public class LevelController {
     public static final float UNIT_SCALE = 1/70f;
 
@@ -38,11 +40,13 @@ public class LevelController {
     }
 
     public static void draw() {
+        spriteBatch.setProjectionMatrix(CameraController.camera.combined);
         spriteBatch.begin();  //starts the spriteBatch object
         PlayerController.player.draw(spriteBatch);  //draws the player onto the screen
         EnemyController.enemy.draw(spriteBatch);
         spriteBatch.end();  //ends the spriteBatch object
 
+        spriteBatch.setProjectionMatrix(CameraController.inputCamera.combined);
         InputController.draw(spriteBatch);
 
         debugRenderer.render(gameWorld, CameraController.camera.combined);  //builds the view

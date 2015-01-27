@@ -7,12 +7,16 @@ import com.tovalina.platformer.model.Player;
 
 public class PlayerController {
     public static Player player;
+    public static String movementAction;
+    public static String specialAction;
 
     private static final float VELOCITY = 1f;
     private static final float MAX_VELOCITY = 5f;
 
     public static void initializeController() {
         player = new Player(new Vector2(0,1), 70, 100, "img/aliens.png");  //initialzes player constructor
+        movementAction = "";
+        specialAction = "";
     }
 
     public static void update(float deltaTime) {
@@ -37,6 +41,12 @@ public class PlayerController {
             player.physicsBody.applyLinearImpulse(0, VELOCITY, position.x, position.y, true);  //moves character to the up when up key is pressed
         }else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             player.physicsBody.applyLinearImpulse(0, -VELOCITY, position.x, position.y, true);  //moves character to the down when down key is pressed
+        }
+
+        if(movementAction.equalsIgnoreCase("right")) {
+            player.physicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);
+        } else if (movementAction.equalsIgnoreCase("left")) {
+            player.physicsBody.applyLinearImpulse(-VELOCITY, 0f, position.x, position.y, true);
         }
     }
 }

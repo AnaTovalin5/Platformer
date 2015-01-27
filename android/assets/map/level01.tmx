@@ -43,5 +43,8 @@
   <object name="ground" type="slope" x="700" y="560">
    <polygon points="0,0 0,70 70,70"/>
   </object>
+  <object name="ground" type="solid" x="840" y="560" width="70" height="70"/>
+  <object name="ground" type="solid" x="910" y="490" width="70" height="70"/>
+  <object name="ground" type="solid" x="980" y="420" width="70" height="70"/>
  </objectgroup>
 </map>

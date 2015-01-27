@@ -2,7 +2,9 @@ package com.tovalina.platformer.model;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.tovalina.platformer.controller.CameraController;
 import com.tovalina.platformer.controller.LevelController;
 
 public class InputControl {
@@ -24,5 +26,9 @@ public class InputControl {
 
     public void draw(Batch spriteBatch) {
         spriteBatch.draw(textureRegion, position.x, position.y, width * LevelController.UNIT_SCALE, height * LevelController.UNIT_SCALE);  //helps draw textureRegion onto the screen
+    }
+
+    public Rectangle getBoundingBox() {
+        return new Rectangle(position.x / LevelController.UNIT_SCALE * CameraController.widthScale, position.y / LevelController.UNIT_SCALE * CameraController.heightScale, width * CameraController.widthScale, height * CameraController.heightScale);
     }
 }
