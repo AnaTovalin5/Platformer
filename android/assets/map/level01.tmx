@@ -33,18 +33,19 @@
    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABOAQAAAAAAAE4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAIwAAACMAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAEgAAABIAAAASAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAFYAAABWAAAAVgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPQAAAD0AAAA9AAAAPQAAAD0AAAA+AAAAVAAAAFQAAAAAAAAAAAAAAD4AAAA9AAAAPQAAAD0AAAA9AAAAPQAAAD0AAAA9AAAAPQAAAD0AAAA=
   </data>
  </layer>
- <objectgroup name="collisions" width="20" height="10">
-  <object name="ground" type="solid" x="0" y="630" width="420" height="70"/>
-  <object name="ground" type="solid" x="700" y="630" width="700" height="70"/>
-  <object name="ground" type="solid" x="1050" y="350" width="350" height="70"/>
-  <object name="ground" type="slope" x="420" y="560">
-   <polygon points="0,0 0,70 -70,70"/>
+ <objectgroup color="#5500ff" name="collisions" width="20" height="10">
+  <object name="ground" type="ground" x="0" y="630">
+   <polyline points="0,0 350,0 420,-70 420,70 700,70 700,-70 770,0 1400,0 1400,70"/>
   </object>
-  <object name="ground" type="slope" x="700" y="560">
-   <polygon points="0,0 0,70 70,70"/>
+  <object name="ground" type="ground" x="423" y="536">
+   <polyline points="0,0 276,1 276,23 -5,23"/>
   </object>
-  <object name="ground" type="solid" x="840" y="560" width="70" height="70"/>
-  <object name="ground" type="solid" x="910" y="490" width="70" height="70"/>
-  <object name="ground" type="solid" x="980" y="420" width="70" height="70"/>
+  <object name="ground" type="ground" x="421" y="535">
+   <polyline points="0,0 -1,21"/>
+  </object>
+  <object name="ground" type="ground" x="840" y="560" width="70" height="70"/>
+  <object name="ground" type="ground" x="910" y="490" width="70" height="70"/>
+  <object name="ground" type="ground" x="980" y="420" width="70" height="70"/>
+  <object name="ground" type="ground" x="1050" y="350" width="350" height="70"/>
  </objectgroup>
 </map>

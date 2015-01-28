@@ -38,22 +38,20 @@ public class PlayerController {
             player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            player.physicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);  //moves character to the right when right key is pressed
-        } else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            player.physicsBody.applyLinearImpulse(-VELOCITY, 0f, position.x, position.y, true);  //moves character to the left when left key is pressed
-        } else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            player.physicsBody.applyLinearImpulse(0, VELOCITY, position.x, position.y, true);  //moves character to the up when up key is pressed
-        } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            player.physicsBody.applyLinearImpulse(0, -VELOCITY, position.x, position.y, true);  //moves character to the down when down key is pressed
+        if (movementAction.equalsIgnoreCase("right")) {
+            player.physicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);
         }
 
-        if(movementAction.equalsIgnoreCase("right")) {
-            player.physicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);
-        } else if (movementAction.equalsIgnoreCase("left")) {
+        if (movementAction.equalsIgnoreCase("left")) {
             player.physicsBody.applyLinearImpulse(-VELOCITY, 0f, position.x, position.y, true);
-        } else if (movementAction.equalsIgnoreCase("jump")) {
+        }
+
+        if (specialAction.equalsIgnoreCase("jump")) {
             player.physicsBody.applyLinearImpulse(0, VELOCITY, position.x, position.y, true);  //moves character to the up when up key is pressed
+        }
+
+        if (specialAction.equalsIgnoreCase("down")) {
+            player.physicsBody.applyLinearImpulse(0, -VELOCITY, position.x, position.y, true);  //moves character to the up when up key is pressed
         }
     }
 }
