@@ -20,6 +20,8 @@ public class Sprite {
     private float stateTime;
     protected HashMap<String, Animation> animations;
 
+    public String direction;
+
     public Sprite(Vector2 position, int width, int height, String sheetpath) {
         this.position = position; //sets the sprite to be placed on the origin
         animations = new HashMap<String, Animation>();
@@ -30,6 +32,8 @@ public class Sprite {
         spriteSheet = new SpriteSheet(sheetpath, width, height);
 
         stateTime = 0f;  //initializes statTime variable
+
+        direction = "right";
     }
 
     public void draw(Batch spriteBatch) {

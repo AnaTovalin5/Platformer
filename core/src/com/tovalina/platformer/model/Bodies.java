@@ -2,10 +2,12 @@ package com.tovalina.platformer.model;
 
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
+import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
@@ -52,6 +54,29 @@ public class Bodies {
 
             physicsBody.createFixture(fixtureDefinition);
             polygonShape.dispose();
+        } else if (bodyType.equalsIgnoreCase("ground")) {
+            PolylineMapObject polylineObject = (PolylineMapObject) mapObject;
+            BodyDef bodyDefinition = new BodyDef();
+            bodyDefinition.type = BodyDef.BodyType.StaticBody;
+
+            bodyDefinition.position.set(polylineObject.getPolyline().getX() * LevelController.UNIT_SCALE, polylineObject.getPolyline().getY() * LevelController.UNIT_SCALE);
+
+            Body physicsBody = LevelController.gameWorld.createBody(bodyDefinition);
+            ChainShape chainShape = new ChainShape();
+            float[] transformedVertices = new float[polylineObject.getPolyline().getVertices().length];
+
+            for (int index = 0; index < transformedVertices.length; index++) {  //transforms each vertex to UNIT_SCALE size
+                transformedVertices[index] = polylineObject.getPolyline().getVertices()[index] * LevelController.UNIT_SCALE;
+            }
+
+            chainShape.createChain(transformedVertices);
+
+            FixtureDef fixtureDefiniton= new FixtureDef();
+            fixtureDefiniton.shape= chainShape;
+            fixtureDefiniton.friction= 1f;
+
+            physicsBody.createFixture(fixtureDefiniton);
+            chainShape.dispose();
         }
     }
 }

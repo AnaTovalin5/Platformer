@@ -13,8 +13,11 @@ public class Player extends Sprite {
     public Player(Vector2 position, int width, int height, String sheetpath) {
         super(position, width, height, sheetpath);
 
-        animations.put("walk", spriteSheet.createAnimation(9, 10, 0.1f));
-        currentAnimation = "walk";
+        animations.put("walkRight", spriteSheet.createAnimation(9, 10, 0.1f));
+        animations.put("idleRight", spriteSheet.createAnimation(6, 6, 6f));
+        animations.put("walkLeft", spriteSheet.flipAnimation(animations.get("walkRight"), true, false));
+        animations.put("idleLeft", spriteSheet.flipAnimation(animations.get("idleRight"), true, false));
+        currentAnimation = "idleRight";
 
         BodyDef bodydefinition = new BodyDef();
         bodydefinition.type = BodyDef.BodyType.DynamicBody;
