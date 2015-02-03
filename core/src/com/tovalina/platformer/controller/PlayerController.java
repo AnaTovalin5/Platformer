@@ -20,7 +20,7 @@ public class PlayerController {
     private static final float MAX_VELOCITY = 5f;
 
     public static void initializeController() {
-        player = new Player(new Vector2(0,1), 70, 100, "img/aliens.png");  //initialzes player constructor
+        player = new Player(new Vector2(0,1), 70, 100, "img/aliens.png");  //initializes player constructor
         movementAction = "";
         specialAction = "";
         playerState = State.Idle;
@@ -40,10 +40,10 @@ public class PlayerController {
             player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
         }
 
-        if (Math.abs(velocity.y) > MAX_VELOCITY) {
-            velocity.y = Math.signum(velocity.x) * MAX_VELOCITY;  //sets maximum velocity so it doesn't fly off the screen
-            player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
-        }
+//        if (Math.abs(velocity.y) > MAX_VELOCITY) {
+//            velocity.y = Math.signum(velocity.x) * MAX_VELOCITY;  //sets maximum velocity so it doesn't fly off the screen
+//            player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
+//        }
 
         if (movementAction.equalsIgnoreCase("right")) {
             player.physicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);

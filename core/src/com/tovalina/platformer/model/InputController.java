@@ -18,15 +18,16 @@ public class InputController {
     private static InputControl left;
     private static InputControl right;
     private static InputControl jump;
+    private static InputControl down;
 
     public static void initializeController() {
         spriteSheet = new SpriteSheet("img/touch-controls.png", 80, 80);
         inputControls = new ArrayList<InputControl>();
 
-        InputControl left = new InputControl(new Vector2(0, 0), spriteSheet.spriteFrames[0], "left");
-        InputControl right = new InputControl(new Vector2(2, 0), spriteSheet.spriteFrames[1], "right");
-        InputControl jump = new InputControl(new Vector2(4, 0), spriteSheet.spriteFrames[2], "jump");
-        InputControl down = new InputControl(new Vector2(6, 0), spriteSheet.spriteFrames[3], "down");
+        left = new InputControl(new Vector2(0, 0), spriteSheet.spriteFrames[0], "left");
+        right = new InputControl(new Vector2(2, 0), spriteSheet.spriteFrames[1], "right");
+        jump = new InputControl(new Vector2(4, 0), spriteSheet.spriteFrames[2], "jump");
+        down = new InputControl(new Vector2(6, 0), spriteSheet.spriteFrames[3], "down");
         inputControls.add(left);
         inputControls.add(right);
         inputControls.add(jump);
@@ -40,6 +41,10 @@ public class InputController {
         for (InputControl inputControl : inputControls) {
             inputControl.draw(spriteBatch);
         }
+        left.draw(spriteBatch);
+        right.draw(spriteBatch);
+        jump.draw(spriteBatch);
+        down.draw(spriteBatch);
         spriteBatch.end();
     }
 

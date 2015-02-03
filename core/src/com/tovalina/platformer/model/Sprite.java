@@ -37,7 +37,7 @@ public class Sprite {
     }
 
     public void draw(Batch spriteBatch) {
-        spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width, height);  //draws the character onto the screen and spcifies the height/width
+        spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width, height);  //draws the character onto the screen and specifies the height/width
     }
 
     public void update(float deltaTime) {
