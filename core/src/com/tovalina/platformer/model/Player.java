@@ -29,11 +29,20 @@ public class Player extends Sprite {
         PolygonShape rectangleShape = new PolygonShape();
         rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(this.width / 2f, this.height / 2f), 0f);  //defines rectangle
 
+        PolygonShape sensorShape = new PolygonShape();
+        sensorShape.setAsBox(this.width / 2.2f, this.height / 32, new Vector2(this.width / 2, 0), 0f);
+
         FixtureDef fixtureDefinition = new FixtureDef();
         fixtureDefinition.shape = rectangleShape;  //creates the shape
 
+        FixtureDef fixtureDefinitionSensor = new FixtureDef();
+        fixtureDefinitionSensor.shape = sensorShape;
+        fixtureDefinitionSensor.isSensor = true;
+
         physicsBody.createFixture(fixtureDefinition);
+        physicsBody.createFixture(fixtureDefinitionSensor);
         rectangleShape.dispose(); //deletes the shape
+        sensorShape.dispose();
     }
 
     public void draw(Batch spriteBatch) {

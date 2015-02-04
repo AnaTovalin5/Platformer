@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.tovalina.platformer.model.Bodies;
+import com.tovalina.platformer.model.CollisionListener;
 import com.tovalina.platformer.model.InputController;
 import com.tovalina.platformer.model.Level;
 import com.tovalina.platformer.model.Sprite;
@@ -32,6 +33,7 @@ public class LevelController {
         renderer = new OrthogonalTiledMapRenderer(level.map, UNIT_SCALE); //renders map onto the screen and sets pixel length of tiles
 
         gameWorld = new World(new Vector2(0, -9.8f), true);
+        gameWorld.setContactListener(new CollisionListener());
         worldBodies = new Array<Body>();
         debugRenderer = new Box2DDebugRenderer();
 

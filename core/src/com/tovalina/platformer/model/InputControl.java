@@ -16,6 +16,7 @@ public class InputControl {
     private float height;
 
     public InputControl(Vector2 position, TextureRegion textureRegion, String action) {
+        this.textureRegion = textureRegion;
         this.position = position;
         this.action = action;
         this.textureRegion = textureRegion;
