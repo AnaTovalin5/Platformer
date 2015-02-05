@@ -46,7 +46,7 @@ public class SpriteSheet {
         TextureRegion[] flippedFrames = new TextureRegion[frameCount];
 
         for(int index = 0; index < frameCount; index++) {
-            flippedFrames[index] = originalAnimation.getKeyFrames()[index];
+            flippedFrames[index] = new TextureRegion(originalAnimation.getKeyFrames()[index]);
             flippedFrames[index].flip(flipX, flipY);
         }
 

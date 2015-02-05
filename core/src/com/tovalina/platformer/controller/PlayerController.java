@@ -10,6 +10,8 @@ public class PlayerController {
     public static String movementAction;
     public static String specialAction;
 
+    public static boolean grounded;
+
     private enum State {
         Idle, Walk, Run, Swim, Duck, Stand, Jump, Climb, Hurt
     }
@@ -17,6 +19,7 @@ public class PlayerController {
     private static State playerState;
 
     private static final float VELOCITY = 1f;
+    private static final float JUMP_VELOCITY = 9f;
     private static final float MAX_VELOCITY = 5f;
 
     public static void initializeController() {
@@ -40,11 +43,6 @@ public class PlayerController {
             player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
         }
 
-//        if (Math.abs(velocity.y) > MAX_VELOCITY) {
-//            velocity.y = Math.signum(velocity.x) * MAX_VELOCITY;  //sets maximum velocity so it doesn't fly off the screen
-//            player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
-//        }
-
         if (movementAction.equalsIgnoreCase("right")) {
             player.physicsBody.applyLinearImpulse(VELOCITY, 0f, position.x, position.y, true);
             player.direction = "right";
@@ -56,8 +54,11 @@ public class PlayerController {
         }
 
         if (specialAction.equalsIgnoreCase("jump")) {
-            player.physicsBody.applyLinearImpulse(0, VELOCITY, position.x, position.y, true);  //moves character to the up when up key is pressed
-            player.direction = "jump";
+            if (grounded == true) {
+                player.physicsBody.applyLinearImpulse(0, JUMP_VELOCITY, position.x, position.y, true);  //moves character to the up when up key is pressed
+                player.direction = "jump";
+                grounded = false;
+            }
         }
 
         if (specialAction.equalsIgnoreCase("down")) {
