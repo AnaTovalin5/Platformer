@@ -2,6 +2,7 @@ package com.tovalina.platformer.controller;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.MathUtils;
 
 public class CameraController {
     public static OrthographicCamera camera;
@@ -24,7 +25,9 @@ public class CameraController {
     }
 
     public static void update() {
-        camera.position.set(PlayerController.player.position.x, PlayerController.player.position.y, 0);
+        float clampX = MathUtils.clamp(PlayerController.player.position.x, inputCamera.viewportWidth / 2f, 20f);
+        float clampY = MathUtils.clamp(PlayerController.player.position.y, inputCamera.viewportHeight / 2f, 30f);
+        camera.position.set(clampX, clampY, 0f);
         camera.update();           //updates camera view
     }
 
