@@ -23,7 +23,7 @@ public class PlayerController {
     private static final float MAX_VELOCITY = 5f;
 
     public static void initializeController() {
-        player = new Player(new Vector2(0,1), 70, 100, "img/aliens.png");  //initializes player constructor
+        player = new Player(new Vector2(0,10), 70, 100, "img/aliens.png");  //initializes player constructor
         movementAction = "";
         specialAction = "";
         playerState = State.Idle;
