@@ -1,10 +1,12 @@
 package com.tovalina.platformer.view;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.tovalina.platformer.Platformer;
 import com.tovalina.platformer.controller.CameraController;
 import com.tovalina.platformer.model.InputControl;
 import com.tovalina.platformer.model.SpriteSheet;
@@ -60,5 +62,11 @@ public class TitleScreen implements Screen {
     @Override
     public void resize(int width, int height) {
 
+    }
+
+    private static void handleInput() {
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+            boolean isTouched = Gdx.input.isTouched();
+        }
     }
 }

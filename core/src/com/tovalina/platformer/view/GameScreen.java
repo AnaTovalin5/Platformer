@@ -15,6 +15,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.tovalina.platformer.controller.CameraController;
 import com.tovalina.platformer.controller.EnemyController;
 import com.tovalina.platformer.controller.LevelController;
+import com.tovalina.platformer.controller.MusicController;
 import com.tovalina.platformer.controller.PlayerController;
 import com.tovalina.platformer.model.Enemy;
 import com.tovalina.platformer.model.InputController;
@@ -27,6 +28,7 @@ public class GameScreen implements Screen {
     public GameScreen() {
         LevelController.initializeController();
         CameraController.intializeController();
+        //MusicController.initializeMusicController();
         PlayerController.initializeController();
         EnemyController.initializeController();
         InputController.initializeController();

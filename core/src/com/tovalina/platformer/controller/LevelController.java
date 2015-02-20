@@ -39,6 +39,7 @@ public class LevelController {
 
         spriteBatch = renderer.getSpriteBatch(); //intializes spriteBatch
         createLevelBodies();
+        MusicController.play("music");
     }
 
     public static void draw() {
