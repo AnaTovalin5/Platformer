@@ -58,7 +58,7 @@ public class PlayerController {
                 player.physicsBody.applyLinearImpulse(0, JUMP_VELOCITY, position.x, position.y, true);  //moves character to the up when up key is pressed
                 player.direction = "jump";
                 grounded = false;
-                MusicController.play("jump");
+//                MusicController.play("jump");
             }
         }
 

@@ -77,6 +77,24 @@ public class Bodies {
 
             physicsBody.createFixture(fixtureDefiniton);
             chainShape.dispose();
+        } else if (bodyType.equalsIgnoreCase("block")) {
+            RectangleMapObject rectangleObject = (RectangleMapObject)mapObject;
+            BodyDef bodyDefinition = new BodyDef();
+            bodyDefinition.type = BodyDef.BodyType.DynamicBody;
+            bodyDefinition.position.set(rectangleObject.getRectangle().x * LevelController.UNIT_SCALE, rectangleObject.getRectangle().y * LevelController.UNIT_SCALE);
+            Block block = new Block(bodyDefinition.position, 70, 70, "img/background-tiles.png");
+            LevelController.worldSprites.add(block);
+            Body physicsBody = LevelController.gameWorld.createBody(bodyDefinition);
+            physicsBody.setUserData(block);
+
+            PolygonShape rectangleShape = new PolygonShape();
+            rectangleShape.setAsBox(block.width/2f, block.height/2f, new Vector2(block.width/2f, block.height/2f), 0f);
+
+            FixtureDef fixtureDefinition = new FixtureDef();
+            fixtureDefinition.shape = rectangleShape;
+
+            physicsBody.createFixture(fixtureDefinition);
+            rectangleShape.dispose();
         }
     }
 }

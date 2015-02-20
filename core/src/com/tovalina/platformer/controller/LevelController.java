@@ -28,6 +28,8 @@ public class LevelController {
     private static Array<Body> worldBodies;
     private static Box2DDebugRenderer debugRenderer;
 
+    public static Array<Sprite> worldSprites;
+
     public static void initializeController() {
         level = new Level("map/level01.tmx");
         renderer = new OrthogonalTiledMapRenderer(level.map, UNIT_SCALE); //renders map onto the screen and sets pixel length of tiles
@@ -35,11 +37,12 @@ public class LevelController {
         gameWorld = new World(new Vector2(0, -9.8f), true);
         gameWorld.setContactListener(new CollisionListener());
         worldBodies = new Array<Body>();
+        worldSprites = new Array<Sprite>();
         debugRenderer = new Box2DDebugRenderer();
 
         spriteBatch = renderer.getSpriteBatch(); //intializes spriteBatch
         createLevelBodies();
-        MusicController.play("music");
+//        MusicController.play("music");
     }
 
     public static void draw() {
@@ -47,6 +50,9 @@ public class LevelController {
         spriteBatch.begin();  //starts the spriteBatch object
         PlayerController.player.draw(spriteBatch);  //draws the player onto the screen
         EnemyController.enemy.draw(spriteBatch);
+        for (Sprite sprite : worldSprites) {
+            sprite.draw(spriteBatch);
+        }
         spriteBatch.end();  //ends the spriteBatch object
 
         spriteBatch.setProjectionMatrix(CameraController.inputCamera.combined);
